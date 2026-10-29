@@ -1,0 +1,11 @@
+# Copy to ~/.dbt/profiles.yml (or ./profiles.yml) and set your project.
+uk_house_prices:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth          # uses `gcloud auth application-default login`
+      project: YOUR_GCP_PROJECT
+      dataset: hp_analytics
+      location: EU
+      threads: 4

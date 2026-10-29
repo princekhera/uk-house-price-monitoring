@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: raw
+    schema: "{{ var('raw_dataset') }}"
+    tables:
+      - name: price_paid
+        description: HM Land Registry Price Paid Data 2022-2024 (OGL v3.0)
+      - name: epc
+        description: Slimmed EPC domestic certificates (scripts/02_prepare_epc.py)
+      - name: lad_region_raw
+        description: ONS Local Authority District to Region lookup (England)

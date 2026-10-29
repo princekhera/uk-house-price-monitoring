@@ -1,0 +1,14 @@
+data/
+outputs/
+.venv/
+__pycache__/
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+profiles.yml
+
+*.zip
+*.parquet
+dbt/profiles.yml*.zip
+.DS_Store
+outputs*/

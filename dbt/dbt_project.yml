@@ -1,0 +1,26 @@
+name: uk_house_prices
+version: "1.0.0"
+config-version: 2
+profile: uk_house_prices
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+vars:
+  raw_dataset: hp_raw
+  # Column names in the ONS LAD->Region lookup change with each vintage.
+  lad_code_col: LAD22CD
+  region_name_col: RGN22NM
+  min_price: 10000
+  max_price: 5000000
+
+models:
+  uk_house_prices:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
+    reports:
+      +materialized: table

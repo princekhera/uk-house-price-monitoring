@@ -1,0 +1,36 @@
+version: 2
+models:
+  - name: stg_price_paid
+    columns:
+      - name: transaction_id
+        tests: [unique, not_null]
+      - name: sale_date
+        tests: [not_null]
+  - name: int_sales_epc_matched
+    columns:
+      - name: transaction_id
+        tests: [unique, not_null]
+      - name: match_tier
+        tests:
+          - accepted_values: {values: [1, 2], quote: false}
+  - name: fct_sales_features
+    description: Modelling table - one row per Price Paid sale matched to an EPC.
+    columns:
+      - name: transaction_id
+        tests: [unique, not_null]
+      - name: price
+        tests: [not_null]
+      - name: property_type
+        tests:
+          - accepted_values: {values: ['D', 'S', 'T', 'F']}
+      - name: tenure
+        tests:
+          - accepted_values: {values: ['F', 'L']}
+      - name: region
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['North East', 'North West', 'Yorkshire and The Humber',
+                       'East Midlands', 'West Midlands', 'East of England',
+                       'London', 'South East', 'South West', 'Wales']
+              config: {severity: warn}   # 'Unknown' = LAD code vintage mismatch
